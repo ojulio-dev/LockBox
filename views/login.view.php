@@ -13,9 +13,7 @@
     <div class="bg-white hero mr-40 min-h-screen text-black">
         <div class="hero-content -mt-20">
             <form method="POST" action="/login">
-                <?php 
-                    $validacoes = flash()->get('validacoes');
-                ?>
+                <?php $validacoes = flash()->get('validacoes'); ?>
 
                 <div class="card">
                     <div class="card-body">
@@ -28,7 +26,7 @@
 
                             <input 
                                 type="text" name="email"
-                                class="input input-bordered w-full max-w-xs bg-white"
+                                class="input w-full max-w-xs bg-white"
                                 value="<?= old('email') ?>"
                             />
 

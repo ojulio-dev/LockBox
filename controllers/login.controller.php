@@ -31,21 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     )->fetch();
 
-    if ($usuario) {
-
-        $senhaDoPost = $_POST['senha'];
-
-        $senhaDoBanco = $usuario->senha;
-
-        if (! password_verify($senhaDoPost, $senhaDoBanco)) {
-
-            flash()->push('validacoes_login', ['Usuário ou senha estão incorretos!']);
-
-            header('Location: /login');
-
-            exit();
-
-        }
+    if ($usuario && password_verify($_POST['senha'], $usuario->senha)) {
 
         $_SESSION['auth'] = $usuario;
 
@@ -54,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: /");
 
         exit();
+
+    } else {
+
+        flash()->push('validacoes', ['email' => ['Usuário ou senha estão incorretos!']]);
 
     }
 
