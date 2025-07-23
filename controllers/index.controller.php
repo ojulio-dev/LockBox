@@ -1,3 +1,3 @@
 <?php
 
-view('index', compact('livros'));
+view('index');
