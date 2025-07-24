@@ -1,8 +1,12 @@
 <?php
 
+use Core\Database;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $validacao = Validacao::validar([
+    $database = new Database($config['database']);
+
+    $validacao = Core\Validacao::validar([
 
         'nome' => ['required'],
         'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
