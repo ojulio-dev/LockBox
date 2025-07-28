@@ -6,6 +6,12 @@ function base_path($path) {
 
 }
 
+function redirect($uri) {
+
+    return header('Location: ' . $uri);
+
+}
+
 function view($view, $data = []) {
 
     foreach($data as $key => $value) {

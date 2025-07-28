@@ -6,8 +6,8 @@ class LogoutController
 {
     public function __invoke()
     {
+        session_destroy();
 
-        echo "logoutController.__invoke";
-
+        return redirect('/login');
     }
 }
