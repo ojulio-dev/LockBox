@@ -6,11 +6,11 @@ class LoginController
 {
     public function index()
     {
-        echo "LoginController.index";
+        return view('login');
     }
 
     public function login()
     {
-        echo "LoginController.login";
+        echo "loginController.login";
     }
 }
