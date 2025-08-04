@@ -97,3 +97,8 @@ function old($campo) {
     return '';
 
 }
+
+function request()
+{
+    return new Core\Request();
+}

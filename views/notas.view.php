@@ -1,7 +1,7 @@
 <div class="bg-base-300 rounded-l-box w-56 flex flex-col divide-y divide-gray-700 overflow-hidden">
 
     <?php foreach($notas as $nota): ?>
-        <a href="/notas?id=<?=$nota->id?><?= isset($_GET['pesquisar']) ? '&pesquisar=' . $_GET['pesquisar'] : '' ?>"
+        <a href="/notas?id=<?=$nota->id?><?= request()->get('pesquisar', '', '&pesquisar=') ?>"
             class="
                 w-full p-2 cursor-pointer hover:bg-base-200
                 <?php if ($nota->id == $notaSelecionada->id): ?> bg-base-200 <?php endif; ?>
