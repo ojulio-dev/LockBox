@@ -1,0 +1,19 @@
+{
+    "name": "ojulio-dev/lockbox",
+    "authors": [
+        {
+            "name": "ojulio-dev",
+            "email": "juliocontact15@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "App\\": "app/"
+        },
+        "files": [
+            "./Core/functions.php"
+        ]
+    }
+}
