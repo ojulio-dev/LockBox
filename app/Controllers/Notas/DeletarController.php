@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Controllers\Notas;
 
 use App\Models\Nota;
-use Core\Database;
 use Core\Validacao;
 
 class DeletarController
@@ -11,7 +12,7 @@ class DeletarController
     public function __invoke()
     {
         $validacao = Validacao::validar([
-            'id' => ['required']
+            'id' => ['required'],
         ], request()->all());
 
         if ($validacao->naoPassou()) {

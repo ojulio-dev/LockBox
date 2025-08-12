@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Controllers;
 
 use Core\Database;
@@ -15,9 +17,9 @@ class RegisterController
     public function register()
     {
         $validacao = Validacao::validar([
-            'nome' => ['required'],
+            'nome'  => ['required'],
             'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
-            'senha' => ['required', 'min:8', 'max:30', 'strong']
+            'senha' => ['required', 'min:8', 'max:30', 'strong'],
         ], request()->all());
 
         if ($validacao->naoPassou()) {
@@ -27,16 +29,16 @@ class RegisterController
         $database = new Database(config('database'));
 
         $database->query(
-            query: "insert into usuarios (nome, email, senha) values (:nome, :email, :senha)",
+            query: 'insert into usuarios (nome, email, senha) values (:nome, :email, :senha)',
             params: [
-                'nome' => request()->post('nome'),
+                'nome'  => request()->post('nome'),
                 'email' => request()->post('email'),
-                'senha' => password_hash(request()->post('senha'), PASSWORD_DEFAULT)
+                'senha' => password_hash(request()->post('senha'), PASSWORD_DEFAULT),
             ]
         );
 
         flash()->push('mensagem', 'Registrado com sucesso! 👍');
-        
+
         return redirect('/login');
     }
 }

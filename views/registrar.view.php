@@ -26,9 +26,9 @@
 
                             <input name="nome" type="text" class="input input-bordered w-full max-w-xs bg-white" value="<?= old('nome') ?>" />
 
-                            <?php if (isset($validacoes['nome'])): ?>
+                            <?php if (isset($validacoes['nome'])) { ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['nome'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
 
                         <label class="form-control">
@@ -38,9 +38,9 @@
 
                             <input name="email" type="text" class="input input-bordered w-full max-w-xs bg-white" value="<?= old('email') ?>" />
 
-                            <?php if (isset($validacoes['email'])): ?>
+                            <?php if (isset($validacoes['email'])) { ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['email'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
 
                         <label class="form-control">
@@ -58,9 +58,9 @@
 
                             <input name="senha" type="password" class="input input-bordered w-full max-w-xs bg-white" />
 
-                            <?php if (isset($validacoes['senha'])): ?>
+                            <?php if (isset($validacoes['senha'])) { ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['senha'][0] ?></div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
 
                         <div class="card-actions">

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Core;
 
 class Route
@@ -10,17 +12,17 @@ class Route
     {
         if (is_string($controller)) {
             $data = [
-                'class' => $controller,
-                'method' => '__invoke',
-                'middleware' => $middleware
+                'class'      => $controller,
+                'method'     => '__invoke',
+                'middleware' => $middleware,
             ];
         }
 
         if (is_array($controller)) {
             $data = [
-                'class' => $controller[0],
-                'method' => $controller[1],
-                'middleware' => $middleware
+                'class'      => $controller[0],
+                'method'     => $controller[1],
+                'middleware' => $middleware,
             ];
         }
 
@@ -61,22 +63,22 @@ class Route
 
         $httpMethod = request()->post('__method', $_SERVER['REQUEST_METHOD']);
 
-        if ( ! isset( $this->routes[$httpMethod][$uri] ) ) {
+        if (! isset($this->routes[$httpMethod][$uri])) {
             abort(404);
         }
 
         $routeInfo = $this->routes[$httpMethod][$uri];
 
-        $class = $routeInfo['class'];
-        $method = $routeInfo['method'];
+        $class      = $routeInfo['class'];
+        $method     = $routeInfo['method'];
         $middleware = $routeInfo['middleware'];
 
         if ($middleware) {
-            $m = new $middleware;
+            $m = new $middleware();
             $m->handle();
         }
 
-        $c = new $class;
+        $c = new $class();
         $c->$method();
     }
 }

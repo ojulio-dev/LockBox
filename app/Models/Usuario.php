@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Models;
 
-class Usuario {
-
+class Usuario
+{
     public $id;
 
     public $nome;
@@ -11,5 +13,4 @@ class Usuario {
     public $email;
 
     public $senha;
-
 }

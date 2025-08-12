@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace App\Controllers\Notas;
 
 use App\Models\Nota;
@@ -12,20 +14,21 @@ class IndexController
             request()->get('pesquisar')
         );
 
-        if (!$notaSelecionada = $this->getNotaSelecionada($notas)) {
+        if (! $notaSelecionada = $this->getNotaSelecionada($notas)) {
             return view('notas/nao-encontrada');
         }
 
         return view('notas/index', [
-            'notas' => $notas,
-            'notaSelecionada' => $notaSelecionada
+            'notas'           => $notas,
+            'notaSelecionada' => $notaSelecionada,
         ]);
     }
 
     private function getNotaSelecionada($notas)
     {
-        $id = request()->get('id', ( sizeof($notas) > 0 ? $notas[0]->id : null));
-        $filtro = array_filter($notas, fn($n) => $n->id == $id);
+        $id     = request()->get('id', (count($notas) > 0 ? $notas[0]->id : null));
+        $filtro = array_filter($notas, fn ($n) => $n->id == $id);
+
         return array_pop($filtro);
     }
 }
